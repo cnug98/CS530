@@ -18,8 +18,6 @@ bool Validate::validateDigit (char digit){
     return false;
 }
 
-
-
 bool Validate::validateOperators (char operators){
     for(int i = 0; i < 5; i++){
         if(charOperatorsTable[i].charOperators == operators)
@@ -27,8 +25,6 @@ bool Validate::validateOperators (char operators){
     }
     return false;
 }
-
-
 
 bool Validate::validateCharacter(char character) {
     for(int i = 0; i < 52; i++) {
