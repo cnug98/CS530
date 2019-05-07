@@ -11,27 +11,9 @@
 #include "Parser.h"
 
 void Parser::getFile() {
-    char *input = new char[50]();
-    char *inputFile = new char[50]();
-    char *fileName =  new char[50]();
-    string line;
-    
-    printf("Enter a text file name: \n");
-    
-    // Read text file name.
-    if (fgets(input, 50, stdin) != NULL) {
-        sscanf(input, "%s", fileName);
-    }
-    else {
-        printf("Input file name.\n");
-    }
-    
-    strcat(inputFile, fileName);
-    strcat(inputFile, ".txt");
-    
     
     // Open text file and assign each line to vector textContent.
-    ifstream textFile(inputFile);
+    ifstream textFile("ex.txt");
     if (textFile.is_open()) {
         while (textFile.good()) {
             getline(textFile,line);
@@ -44,15 +26,7 @@ void Parser::getFile() {
 }
 
 void Parser::run() {
-    
-    // Open output file
-    char *outFileName = new char[50]();
-    strcat(outFileName, "out.txt");
-    ofstream outfile(outFileName);
-    FILE *outFile = fopen(outFileName, "wb");
-
     bool pass = true;
-    fprintf(outFile, "Line                          Input                                   Validation \n");
     for(int i = 0; i < textContent.size(); i++) {
         // If line is not empty then proceed
         if(!textContent[i].empty()) {
@@ -81,7 +55,7 @@ void Parser::run() {
     }
     printf("\n => File Validation: %s", pass ? "Pass":"Fail");
     printf(" \n");
-    fprintf(outFile,"\n => File Validation: %s", pass ? "Pass":"Fail");
+    //fprintf(outFile,"\n => File Validation: %s", pass ? "Pass":"Fail");
     //printf("Done parsing! Written output to out.txt successfully! \n");
     outfile.close();
 }
