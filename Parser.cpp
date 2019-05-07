@@ -49,15 +49,11 @@ void Parser::run() {
                 pass = false;
             }
         }
-        else{
-	        fprintf(outFile, "%3d: \n", i);
-        }
     }
     printf("\n => File Validation: %s", pass ? "Pass":"Fail");
     printf(" \n");
     //fprintf(outFile,"\n => File Validation: %s", pass ? "Pass":"Fail");
     //printf("Done parsing! Written output to out.txt successfully! \n");
-    outfile.close();
 }
 // Choose an approriate validation for each instruction
 vector<string> Parser::chooseVal(vector<string> token) {
