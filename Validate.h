@@ -8,8 +8,8 @@
  * Purpose: Contains header methods for Parser functions as well as structs which contain each possible digit, char and operator
  */
 
-#ifndef __prog3__Validate__
-#define __prog3__Validate__
+#ifndef __Validate__
+#define __Validate__
 
 #include <iostream>
 #include <string>
@@ -73,4 +73,4 @@ const struct characters characterTable [] = {
     { 'W' },   { 'X' },    { 'Y' },    { 'Z' },
 };
 
-#endif /* defined(__prog3__Validate__) */
+#endif /* defined(__Validate__) */
