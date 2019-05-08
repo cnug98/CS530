@@ -22,3 +22,6 @@
 
 ## Known Faults / Bugs
 * Due to time constraints, parantheses cases were not fully implemented, and the program may interpret certain IDs and edge cases involving parentheses as invalid, regardless of if the ID was actually valid or not. Otherwise all other basic op, id, expression and assignment checks should be working optimally.
+
+## Lessons Learned From Project
+* Though we did go over rulesets, grammar and parsers in some detail during CS320, this was a good learning experience given that we went through grammars in a more in-depth way in this assignment and unit in general. Time management was a large issue for me during this project, especially since finals and other projects vyed for my time. This resulted in a very important portion of grammar checking, being parentheses, not being implemented correctly, which may negatively affect my final score.
