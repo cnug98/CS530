@@ -11,16 +11,14 @@
 #include "Parser.h"
 
 void Parser::getFile() {
-    
-    // Open text file and assign each line to vector textContent.
-    ifstream textFile("ex.txt");
+    string line;
+    ifstream textFile("ex.txt"); //open ex.txt for tokenization
     if (textFile.is_open()) {
         while (textFile.good()) {
             getline(textFile,line);
-            textContent.push_back(line);
+            textContent.push_back(line); //assign each line to textContent
         }
         textFile.close();
-        // After reading file successfully. Run program:
         Parser::run();
     } else printf("Unable to open text file.\n");
 }
@@ -28,35 +26,27 @@ void Parser::getFile() {
 void Parser::run() {
     bool pass = true;
     for(int i = 0; i < textContent.size(); i++) {
-        // If line is not empty then proceed
         if(!textContent[i].empty()) {
-            // Tokenize to string named token
             vector<string> token;
             istringstream f(textContent[i]);
             string s;
-            while (getline(f, s, ' ')) {
+            while (getline(f, s, ' ')) { //tokenizes each token into a string vector
                 token.push_back(s);
-            }
-            
-            // Write to out.txt
-            vector<string> temp = chooseVal(token);
-            printf(" %s \n",textContent[i].c_str());
-            printf(" %s \n",temp[0].c_str());
+            }           
+            vector<string> temp = getVal(token);
+            printf("Line %d:", i + 1); //print line #
+            printf(" %s \n",textContent[i].c_str()); //prints the full line, if the grammar is valid, and why it did not pass the test if applicable
+            printf(" %s \n",temp[0].c_str());          
             printf(" %s \n",temp[1].c_str());
-            //fprintf(outFile, "%3d: %-60s  %-20s %-20s \n", i, textContent[i].c_str(), temp[0].c_str(), temp[1].c_str());
-            // If there is an invalid instruction then set pass = false
-            if (temp[0].length() > 16) {
-                pass = false;
-            }
+            if (temp[0].length() > 16) //if an invalid instruction is found, the file fails inspection
+                pass = false; 
         }
+
     }
-    printf("\n => File Validation: %s", pass ? "Pass":"Fail");
+    printf("\n File Validation: %s", pass ? "Pass":"Fail");
     printf(" \n");
-    //fprintf(outFile,"\n => File Validation: %s", pass ? "Pass":"Fail");
-    //printf("Done parsing! Written output to out.txt successfully! \n");
 }
-// Choose an approriate validation for each instruction
-vector<string> Parser::chooseVal(vector<string> token) {
+vector<string> Parser::getVal(vector<string> token) { //retrieves the validity of each statement
     vector<string> result(2), temp(2);
     stringstream ss;
     Validate *validate = new Validate;
@@ -64,22 +54,22 @@ vector<string> Parser::chooseVal(vector<string> token) {
         if (token[i] == "=") { //if an = exists check assignments
             temp = validate->validateAssg(token);
             if (temp[0] == "1"){
-                result[0] = "Valid Assignment.";
+                result[0] = "Valid assignment";
                 result[1] = " ";
                 return result;
             }
-            result[0] = "Invalid Assignment.";
+            result[0] = "Invalid assignment";
             result[1] = temp[1];
             return result;
         }
     }
-    temp = validate->validateExp(token); //otherwise check for valid expressions
+    temp = validate->validateExp(token); //otherwise check for expressions
     if (temp[0] == "1") {
-        result[0] = "Valid Expression.";
+        result[0] = "Valid expression";
         result[1] = " ";
         return result;
     }
-    result[0] = "Invalid Expression.";
+    result[0] = "Invalid expression";
     result[1] = temp[1];
     return result;
 }

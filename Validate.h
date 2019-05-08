@@ -35,7 +35,7 @@ struct charDigit {
     char charDigitZeroToNine;
 };
 
-const struct charDigit charDigitTable[] = {
+const struct charDigit charDigitTable[] = { //set of all digits
     { '0' },   { '1' },
     { '2' },   { '3' },
     { '4' },   { '5' },
@@ -47,7 +47,7 @@ struct operators {
     char charOperators;
 };
 
-const struct operators charOperatorsTable [] = {
+const struct operators charOperatorsTable [] = { //set of all operators
     { '+' },   { '-' },
     { '*' },   { '/' },
     { '%' },
@@ -57,7 +57,7 @@ struct characters {
     char character_aToZ;
 };
 
-const struct characters characterTable [] = {
+const struct characters characterTable [] = { //set of all characters
     { 'a' },   { 'b' },    { 'c' },    { 'd' },
     { 'e' },   { 'f' },    { 'g' },    { 'h' },
     { 'i' },   { 'j' },    { 'k' },    { 'l' },

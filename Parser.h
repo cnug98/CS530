@@ -20,7 +20,7 @@ public:
     void run();
     
 private:
-    vector<string> chooseVal(vector<string> token);
+    vector<string> getVal(vector<string> token);
     vector<string> textContent;
 };
 
