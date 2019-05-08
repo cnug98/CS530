@@ -4,7 +4,7 @@
 * RedID: 820151963
 * Username: cssc0440
 * Class: CS530, Spring 2019
-* Assignment #3: Grammar Parsing
+* Assignment #3: File Parser
 
 ## Files Used
 * Main Program: exp.cpp (no header file used)
