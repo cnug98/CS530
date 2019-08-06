@@ -1,0 +1,24 @@
+Steps required to complete part1
+Step1:parse input
+	store command line argument into filename variable
+Step2: parse .sym file
+	instantiate 1 dictionary (going to need 3 for the whole project) for filename.sym file
+	skip table headers
+	foreach line up until 'Name'
+		enter file data into [hex value, string] dictionary
+	ignoring literals for now
+	stop reading file when you get to 'Name'
+Step3: parse .obj file
+	open file
+	read in name
+	read in starting adress
+	read in length of program ? (do we need this?)
+	foreach Text record
+		save starting adress for the line (We need this for .lis file)
+		read length of object code in the record (to when to stop reading)
+		read each object code into an object storing op,flags, stated adress, and memory location
+		append the object to a list of all text record object codes
+	Read end record
+	store adress of first executable intstruction
+Step4: (Colin's part) haven't figured this out yet. Feel free to complete or edit
+	
